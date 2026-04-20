@@ -15,4 +15,8 @@
 - [ ] Đã đọc dữ liệu từ `data/input.txt`
 
 ## Điều em học được từ bài lab
-Viết 3-5 dòng ngắn gọn ở đây.
+Hiểu được nguyên lý hoạt động của các thuật toán mã hóa cổ điển như Caesar Cipher và Rail Fence Cipher.
+Biết cách xử lý chuỗi và thao tác ký tự trong C++ để thực hiện mã hóa/giải mã.
+Nắm được cách kiểm tra dữ liệu đầu vào và xử lý lỗi khi người dùng nhập sai.
+Học cách đọc dữ liệu từ file và áp dụng vào chương trình thực tế.
+Nhận ra tầm quan trọng của việc tổ chức code rõ ràng và tái sử dụng hàm.v
