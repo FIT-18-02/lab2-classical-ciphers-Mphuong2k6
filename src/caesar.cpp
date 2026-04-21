@@ -32,8 +32,11 @@ string caesar_encrypt(const string &plaintext, int shift) {
 }
 
 string caesar_decrypt(const string &ciphertext, int shift) {
-    // TODO(student): Q3
-    return caesar_encrypt(ciphertext, -shift);
+    string plaintext;
+    for (char c : ciphertext) {
+        plaintext += shift_char(c, -shift);
+    }
+    return plaintext;
 }
 
 int main() {
