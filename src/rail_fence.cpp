@@ -23,7 +23,6 @@ string rail_fence_encrypt(const string &plaintext, int rails) {
     int direction = 1;
 
     for (char c : plaintext) {
-        // TODO(student): Q6 can keep spaces as normal characters.
         fence[rail] += c;
         rail += direction;
         if (rail == rails - 1 || rail == 0) direction = -direction;
@@ -35,8 +34,39 @@ string rail_fence_encrypt(const string &plaintext, int rails) {
 }
 
 string rail_fence_decrypt(const string &ciphertext, int rails) {
-    // TODO(student): Q5
-    return ciphertext;
+    if (rails <= 1 || ciphertext.empty()) return ciphertext;
+
+    int n = ciphertext.length();
+    vector<vector<char>> fence(rails, vector<char>(n, '\n'));
+
+    // B1: đánh dấu zigzag
+    int row = 0, direction = 1;
+    for (int col = 0; col < n; col++) {
+        fence[row][col] = '*';
+        row += direction;
+        if (row == 0 || row == rails - 1) direction = -direction;
+    }
+
+    // B2: điền ciphertext vào
+    int index = 0;
+    for (int i = 0; i < rails; i++) {
+        for (int j = 0; j < n; j++) {
+            if (fence[i][j] == '*' && index < n) {
+                fence[i][j] = ciphertext[index++];
+            }
+        }
+    }
+
+    // B3: đọc lại zigzag
+    string plaintext;
+    row = 0; direction = 1;
+    for (int col = 0; col < n; col++) {
+        plaintext += fence[row][col];
+        row += direction;
+        if (row == 0 || row == rails - 1) direction = -direction;
+    }
+
+    return plaintext;
 }
 
 string read_message_from_file(const string &path) {
